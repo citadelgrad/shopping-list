@@ -1,0 +1,11 @@
+**/.DS_Store
+nbproject
+manifest.mf
+build.xml
+test
+logs
+scripts
+config
+.project
+.settings
+.idea/*

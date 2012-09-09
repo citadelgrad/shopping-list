@@ -6,7 +6,7 @@
     <div id="content">
         <ul>
             <li class="arrow plastic" ng-repeat="recipe in recipes">
-                <a href="#/recipes/{{ recipe.id }}"><h3>{{ recipe.recipe_name }}</h3></a>
+                <a href="#/recipes/{{ recipe.id }}" ng-click='recipeDetail(recipe)'><h3>{{ recipe.recipe_name }}</h3></a>
                 <small><button ng-click="addRecipe2List(recipe)">Add Recipe</button></small>
                 <!-- <p>Servings: {{ recipe.recipe_servings }}</p> -->
             </li>
@@ -17,11 +17,8 @@
             <h3>My List</h3>
             <ul>
                 <li ng-repeat="item in shopList">
-                    {{ item.text }}
-                </li>
-                <li ng-repeat="item in scott">
-                    {{ item.text.recipe_name }}
-                    <span ng-repeat="ingred in item.text.ingredients">
+                    {{ item.recipe.recipe_name }}
+                    <span ng-repeat="ingred in item.recipe.ingredients">
                         {{ ingred.ri_amount }} {{ ingred.ingred_name.ingred_name }}
                     </span><br>
                 </li>

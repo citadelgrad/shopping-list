@@ -2,31 +2,37 @@
 
 /* Controllers */
 RecipesListCtrl.$inject = ['$scope', '$http'];
-RecipesDetailCtrl.$inject = ['$scope', '$routeParams'];
+RecipesDetailCtrl.$inject = ['$scope', '$routeParams', '$http'];
 
 function RecipesListCtrl($scope, $http){
     $http.get('js/data.json').success(function(data) {
         $scope.recipes = data.objects;
-        console.log($scope);
     });
 
     $scope.shopList = []; //{text: 'a start'}
-    $scope.scott = [];
-    var arr = new Array();
     $scope.addListItem = function() {
+        // Can be used for the Shopping List to manually add items
         $scope.shopList.push({text:$scope.shopList.add2List,});
         $scope.shopList.add2List = '';
     }
-    $scope.addRecipe2List = function(asdf)  {
-        console.log(asdf);
+    $scope.addRecipe2List = function(recipe_obj)  {
+        // Here we copy the recipe to a scope
+        console.log(recipe_obj);
 
-        $scope.scott.push({text:asdf,});
+        $scope.shopList.push({recipe:recipe_obj,});
+    }
+    $scope.recipe = [];
+    $scope.recipeDetail = function(recipe_obj) {
+        // push State to change the uri
+        $scope.recipe.push(recipe_obj);
+        // Send obj to a service
+        // https://gist.github.com/3595424
     }
 }
 
-function RecipesDetailCtrl($scope, $routeParams) {
-  $scope.recipeId = $routeParams.recipeId;
-  console.log("something happened");
+function RecipesDetailCtrl($scope, $routeParams, $http) {
+  console.log($scope);
+   
 }
 
 

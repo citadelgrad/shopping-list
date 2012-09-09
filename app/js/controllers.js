@@ -10,14 +10,17 @@ function RecipesListCtrl($scope, $http){
         console.log($scope);
     });
 
-    $scope.shopList = [{text: 'a start'}];
-
+    $scope.shopList = []; //{text: 'a start'}
+    $scope.scott = [];
+    var arr = new Array();
     $scope.addListItem = function() {
         $scope.shopList.push({text:$scope.shopList.add2List,});
         $scope.shopList.add2List = '';
     }
     $scope.addRecipe2List = function(asdf)  {
         console.log(asdf);
+
+        $scope.scott.push({text:asdf,});
     }
 }
 

@@ -1,43 +1,46 @@
 
-<ul>
-  <li ng-repeat="recipe in recipes">
-    <h3>{{ recipe.recipe_name }}</h3>
+<div id='recipe-list'>
+    <header class="toolbar">
+        <h1>Happy Herbivore Shopping List</h1>
+    </header>
+    <div id="content">
+        <ul>
+            <li class="arrow plastic" ng-repeat="recipe in recipes">
+                <a href="#/recipes/{{ recipe.id }}"><h3>{{ recipe.recipe_name }}</h3></a>
+                <small><button ng-click="addRecipe2List(recipe)">Add Recipe</button></small>
+                <!-- <p>Servings: {{ recipe.recipe_servings }}</p> -->
+            </li>
+        </ul>
 
+        <div style="float:right; top:0;position:absolute; right:30px;">
+
+            <h3>My List</h3>
+            <ul>
+                <li ng-repeat="item in shopList">
+                    {{ item.text }}
+                </li>
+                <li ng-repeat="item in scott">
+                    {{ item.text.recipe_name }}
+                    <span ng-repeat="ingred in item.text.ingredients">
+                        {{ ingred.ri_amount }} {{ ingred.ingred_name.ingred_name }}
+                    </span><br>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+            <!--<ul>
+              <li ng-repeat="ing in recipe.ingredients">{{ ing.ri_amount }} {{ ing.measurement.m_name }} {{ ing.ingred_name.ingred_name }}</li>
+          </ul>-->
+
+    <!--
     <form ng-submit="addListItem()">
       <input ng-model="shopList.add2List">
       <input class="btn-primary" type="submit" value="add">
       {{ add2List }}
-    </form>
-
-    <button ng-click="addRecipe2List(recipe)">Add Recipe</button>
-
-    <p>Servings: {{ recipe.recipe_servings }}</p>
-    <ul>
-      <!--<li ng-repeat="ing in recipe.ingredients">{{ ing.ri_amount }} {{ ing.measurement.m_name }} {{ ing.ingred_name.ingred_name }}</li>-->
-    </ul>
-
-  </li>
-</ul>
-
-<div style="float:right; top:0;position:absolute; right:30px;">
-
-  <h3>My List</h3>
-  <ul>
-    temp: {{ add2List }}
-    <li ng-repeat="item in shopList">
-      {{ item.text }}
-    </li>
-    <li ng-repeat="item in scott">
-      {{ item.text.recipe_name }}
-      <span ng-repeat="ingred in item.text.ingredients">
-        {{ ingred.ri_amount }} {{ ingred.ingred_name.ingred_name }}
-      </span><br>
-    </li>
-  </ul>
-
-
-
-</div>
+  </form>-->
 
 <!--
     <div style="float:right; top:100;position:absolute; right:30px;" ng-controller="TodoCtrl">

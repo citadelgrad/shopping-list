@@ -26,6 +26,7 @@ function RecipesListCtrl($scope, $http){
 
 function RecipesDetailCtrl($scope, $routeParams) {
   $scope.recipeId = $routeParams.recipeId;
+  console.log("something happened");
 }
 
 

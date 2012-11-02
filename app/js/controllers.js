@@ -20,27 +20,34 @@ function RecipesListCtrl($scope, $http){
         console.log(recipe_obj);
 
         $scope.shopList.push({recipe:recipe_obj,});
+        localStorage.setItem("shopList", JSON.stringify($scope.shopList));
     }
     $scope.recipe = [];
     $scope.recipeDetail = function(recipe_obj) {
         // push State to change the uri
         $scope.recipe.push(recipe_obj);
-        // Send obj to a service
-        // https://gist.github.com/3595424
+        localStorage.setItem(recipe_obj.id, JSON.stringify(recipe_obj));
     }
 }
 
 function RecipesDetailCtrl($scope, $routeParams, $http) {
-  console.log($scope);
+    $scope.recipeId = $routeParams.recipeId;
+    var recipestr = localStorage.getItem($scope.recipeId);
+    var recipejson = JSON.parse(recipestr);
+    console.log(recipejson);
+    $scope.recipe = recipejson;
    
 }
 
-
+function ShopListCtrl($scope, $http) {
+    $scope.shopList = JSON.parse(localStorage.getItem("shopList"));
+}
 
 function TodoCtrl($scope) {
-  $scope.todos = [
-    {text:'learn angular', done:true},
-    {text:'build an angular app', done:false}];
+    $scope.todos = [
+        {text:'learn angular', done:true},
+        {text:'build an angular app', done:false}
+    ];
  
   $scope.addTodo = function() {
     $scope.todos.push({text:$scope.addt, done:false});

@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myList">
 <head>
     <meta charset="utf-8">
-    <title>My AngularJS App</title>
+    <title>Happy Herbivore Shopping List</title>
 
 
     <link rel="stylesheet" href="css/app.css"/>
@@ -20,6 +20,7 @@
     <script src="js/jquery-1.7.min.js" type="application/x-javascript" charset="utf-8"></script>
     <script src="js/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
     <script src="js/jqtouch-jquery.min.js" type="application/x-javascript" charset="utf-8"></script>
+    <script src="js/modernizr261.js" type="application/x-javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
             var jQT = new $.jQTouch({
                 icon: 'jqtouch.png',
@@ -34,6 +35,13 @@
 
 </head>
 <body>
-    <div id='app-container' ng-view></div>
+    <div>
+        <header class="toolbar" data-role="header" data-position="fixed">
+            <h1>Happy Herbivore Shopping List</h1>
+        </header>
+        <div id='app-container' ng-view>
+
+        </div>
+    </div>
 </body>
 </html>

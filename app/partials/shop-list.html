@@ -1,0 +1,14 @@
+<div>
+
+    <h3>My List</h3>
+    <ul>
+        <li ng-repeat="item in shopList">
+            <h3><a href="#/recipes/{{ item.recipe.id }}">{{ item.recipe.recipe_name }}</a></h3>
+            <hr>
+            <span ng-repeat="ingred in item.recipe.ingredients">
+                {{ ingred.ri_amount }} {{ ingred.ingred_name.ingred_name }}<br>
+            </span>
+        </li>
+    </ul>
+
+</div>

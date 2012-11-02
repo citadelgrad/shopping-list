@@ -1,8 +1,15 @@
-<div id='recipedetail'>
-    <header class="toolbar">
-        <h1>{{ recipe.recipe_name }}</h1>
-    </header>
-    <div id="contentdetail">
-        {{ recipe.description}}
-    </div>
+<div id="contentdetail">
+    <h2>{{ recipe.recipe_name }}</h2>
+    <p>{{ recipe.servings }}</p>
+    <ul>
+        <li ng-repeat="ing in recipe.ingredients">
+            {{ ing.ri_amount }} {{ ing.measurement.m_name }} {{ ing.ingred_name.ingred_name }} 
+            <span ng-show="ing.ri_optional">(optional)</span>
+        </li>
+    </ul>
+    Desciption: 
+    <div ng-bind-html-unsafe="recipe.recipe_description"></div>
+    Instructions:
+    <div ng-bind-html-unsafe="recipe.recipe_instructions"></div>
+    <p></p>
 </div>

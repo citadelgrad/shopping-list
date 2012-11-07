@@ -15,13 +15,14 @@ function RecipesListCtrl($scope, $http){
         $scope.shopList.push({text:$scope.shopList.add2List,});
         $scope.shopList.add2List = '';
     }
+    
     $scope.addRecipe2List = function(recipe_obj)  {
-        // Here we copy the recipe to a scope
-        console.log(recipe_obj);
-
-        $scope.shopList.push({recipe:recipe_obj,});
+        // Here we load the saved list and copy the recipe to a scope.
+        $scope.shopList = JSON.parse(localStorage.getItem("shopList"))
+        $scope.shopList.push({ recipe:recipe_obj,});
         localStorage.setItem("shopList", JSON.stringify($scope.shopList));
     }
+
     $scope.recipe = [];
     $scope.recipeDetail = function(recipe_obj) {
         // push State to change the uri
@@ -41,6 +42,16 @@ function RecipesDetailCtrl($scope, $routeParams, $http) {
 
 function ShopListCtrl($scope, $http) {
     $scope.shopList = JSON.parse(localStorage.getItem("shopList"));
+
+    $scope.removeRecipe = function(recipe_obj) {
+        var shop_list_json = JSON.parse(localStorage.getItem("shopList"));
+        // Loop the list and removed the recipe
+        angular.forEach(shop_list_json, function(value, key){ if (value.recipe.id == recipe_obj.id) { shop_list_json.splice(key,1) } });
+        // Save the list to localstorage.
+        localStorage.setItem("shopList", JSON.stringify(shop_list_json));
+        // Update the Angular scope.
+        $scope.shopList = shop_list_json;
+    }
 }
 
 function TodoCtrl($scope) {

@@ -1,12 +1,16 @@
-    <div id="content">
-        <ul>
-            <li class="arrow plastic" ng-repeat="recipe in recipes">
-                <a href="#/recipes/{{ recipe.id }}" ng-click='recipeDetail(recipe)'><h3>{{ recipe.recipe_name }}</h3></a>
-                <small><button ng-click="addRecipe2List(recipe)">Add Recipe</button></small>
-                <!-- <p>Servings: {{ recipe.recipe_servings }}</p> -->
-            </li>
-        </ul>
-    </div>
+<header class="toolbar">
+    <h1>Recipes</h1>
+    <a class="back" href="#/">Home</a>
+</header>
+<div>
+    <ul>
+        <li class="arrow plastic" ng-repeat="recipe in recipes">
+            <a href="#/recipes/{{ recipe.id }}" class="slideleft" ng-click='recipeDetail(recipe)'><h3>{{ recipe.recipe_name }}</h3></a>
+            <small><button ng-click="addRecipe2List(recipe)">Add Recipe</button></small>
+            <!-- <p>Servings: {{ recipe.recipe_servings }}</p> -->
+        </li>
+    </ul>
+</div>
 
             <!--<ul>
               <li ng-repeat="ing in recipe.ingredients">{{ ing.ri_amount }} {{ ing.measurement.m_name }} {{ ing.ingred_name.ingred_name }}</li>

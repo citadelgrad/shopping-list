@@ -5,8 +5,10 @@ RecipesListCtrl.$inject = ['$scope', '$http'];
 RecipesDetailCtrl.$inject = ['$scope', '$routeParams', '$http'];
 
 function RecipesListCtrl($scope, $http){
+
     $http.get('js/data.json').success(function(data) {
         $scope.recipes = data.objects;
+
     });
 
     $scope.shopList = []; //{text: 'a start'}
@@ -15,7 +17,7 @@ function RecipesListCtrl($scope, $http){
         $scope.shopList.push({text:$scope.shopList.add2List,});
         $scope.shopList.add2List = '';
     }
-    
+
     $scope.addRecipe2List = function(recipe_obj)  {
         // Here we load the saved list and copy the recipe to a scope.
         $scope.shopList = JSON.parse(localStorage.getItem("shopList"))
@@ -32,12 +34,12 @@ function RecipesListCtrl($scope, $http){
 }
 
 function RecipesDetailCtrl($scope, $routeParams, $http) {
+
     $scope.recipeId = $routeParams.recipeId;
     var recipestr = localStorage.getItem($scope.recipeId);
     var recipejson = JSON.parse(recipestr);
     console.log(recipejson);
     $scope.recipe = recipejson;
-   
 }
 
 function ShopListCtrl($scope, $http) {

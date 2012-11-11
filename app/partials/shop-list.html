@@ -1,9 +1,39 @@
+<header class="toolbar">
+    <h1>List</h1>
+    <a class="back" href="#/">Home</a>
+</header>
 <div>
+    <style>
+    #jqt .slideright.in {
+      -webkit-animation-name: slideRightIn;
+    }
+    #jqt .slideright.out {
+      -webkit-animation-name: slideRightOut;
+    }
+
+    @-webkit-keyframes slideRightIn {
+        0% {
+            -webkit-transform: translateX(-100%);
+        }
+        100% {
+            -webkit-transform: translateX(0);
+        }
+    }
+
+    @-webkit-keyframes slideRightOut {
+        0% {
+            -webkit-transform: translateX(0);
+        }
+        100% {
+            -webkit-transform: translateX(100%);
+        }
+    }
+    </style>
 
     <h3>My List</h3>
     <ul>
         <li ng-repeat="item in shopList">
-            <h3><a href="#/recipes/{{ item.recipe.id }}">{{ item.recipe.recipe_name }}</a></h3> <button ng-click="removeRecipe(item.recipe)">Remove</button>
+            <h3><a href="#/recipes/{{ item.recipe.id }}" ng-class="slideright.in">{{ item.recipe.recipe_name }}</a></h3> <button ng-click="removeRecipe(item.recipe)">Remove</button>
             <hr>
             <span ng-repeat="ingred in item.recipe.ingredients">
                 {{ ingred.ri_amount }} {{ ingred.ingred_name.ingred_name }}<br>

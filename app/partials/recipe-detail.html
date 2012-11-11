@@ -1,5 +1,9 @@
+<header class="toolbar">
+    <h1>{{ recipe.recipe_name }}</h1>
+    <a class="back" href="#/">Back</a>
+</header>
 <div id="contentdetail" data-title="recipe.recipe_name">
-    <h2>{{ recipe.recipe_name }}</h2>
+    <h2 ng-model="title">{{ recipe.recipe_name }}</h2>
     <p>{{ recipe.servings }}</p>
     <ul>
         <li ng-repeat="ing in recipe.ingredients">

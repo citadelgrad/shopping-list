@@ -3,7 +3,7 @@
 //var myListModule = angular.module('myList', []);
  
 // Declare app level module which depends on filters, and services
-angular.module('myList', []).
+angular.module('myList', ['myList.filters',]).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: RecipesListCtrl});
     $routeProvider.when('/shoplist', {templateUrl: 'partials/shop-list.html', controller: ShopListCtrl});

@@ -38,7 +38,6 @@ function RecipesDetailCtrl($scope, $routeParams, $http) {
     $scope.recipeId = $routeParams.recipeId;
     var recipestr = localStorage.getItem($scope.recipeId);
     var recipejson = JSON.parse(recipestr);
-    console.log(recipejson);
     $scope.recipe = recipejson;
 }
 

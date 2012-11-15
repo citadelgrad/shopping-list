@@ -1,10 +1,19 @@
+<style type="text/css">
+    #jqt ul li input[type="text"].search-box {border: 1px solid rgb(146, 146, 146);}
+</style>
 <header class="toolbar">
     <h1>Recipes</h1>
     <a class="back" href="#/">Home</a>
 </header>
 <div>
     <ul>
-        <li class="arrow plastic" ng-repeat="recipe in recipes">
+        <li>
+            <label>
+                Search:
+                <input type="text" name="recipe-search" ng-model="recipeLookup" class="search-box">
+            </label>
+        </li>
+        <li class="arrow plastic" ng-repeat="recipe in recipes | filter:recipeLookup">
             <a href="#/recipes/{{ recipe.id }}" class="slideleft" ng-click='recipeDetail(recipe)'><h3>{{ recipe.recipe_name }}</h3></a>
             <small><button ng-click="addRecipe2List(recipe)">Add Recipe</button></small>
             <!-- <p>Servings: {{ recipe.recipe_servings }}</p> -->
